@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(../fonts/Roboto/Roboto-Regular.ttf);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', monospace!important;
+}
+
+.container-fluid {
+    height: 100vh;
+    background-color: #F5F5F5;
+}
+
+.container-fluid .row > div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.container-fluid .main-row > div .calculator {
+    width: 80%;
+    height: 600px;
+    background-color: #171717;
+}
+
+
+
+@media(max-width: 991px) {
+
+}
+
+@media(min-width: 992px) {
+
+}
