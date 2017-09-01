@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+//constants
+import {BACK_SPACE, SQUARE_ROOT} from '../constants/keypadConstants';
+
 //helpers
 import PropTypes from 'prop-types';
 
@@ -13,6 +16,16 @@ class Keypad extends Component{
         this.state = {};
     }
 
+    getIconImage = (key) => {
+
+        if(key == BACK_SPACE){
+            return (<img src="/images/ic_backspace_white_24px.svg" />);
+        }else if(key == SQUARE_ROOT){
+            return <img src="/images/icons8-square_root-48.png" />;
+        }
+
+    }
+
     render(){
         return (
             <Grid className="keypad">
@@ -21,7 +34,11 @@ class Keypad extends Component{
                         {
                             this.props.keys.map((key, index) => {
                                 return (
-                                    <button type="button" className="key" key={index} onClick={this.props.onKeyPress}>{key}</button>
+                                    <button type="button" className="key" key={index} onClick={this.props.onKeyPress}>
+                                        {
+                                            key != BACK_SPACE && key != SQUARE_ROOT ? key : this.getIconImage(key)
+                                        }
+                                    </button>
                                 );
                             })
                         }

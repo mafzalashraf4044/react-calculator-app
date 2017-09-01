@@ -18,7 +18,7 @@ export const DIVIDE      = "/";
 export const DECIMAL     = ".";
 export const PERCENTAGE  = "%";
 export const SQUARE_ROOT = "sq-root";
-export const SIGN        = "+-"
+export const SIGN        = "+/-"
 
 //Operations
 export const EVALUATE   = "=";
