@@ -2,7 +2,11 @@ import React, {
     Component
 } from 'react';
 
+//constants
 import * as keys from '../constants/keypadConstants'; 
+
+//helpers
+// import update from 'immutability-helper';
 
 //Third Party Components
 import { Grid, Row, Col } from 'react-bootstrap';
@@ -36,13 +40,34 @@ export default class App extends Component {
                 keys.DECIMAL,
                 keys.SIGN,
                 keys.EVALUATE
-            ]
-
+            ],
+            expression: "",
+            history: [],
         };
     }
 
     onKeyPress = (event) => {
-        console.log("event", event.target)
+        let id = event.target.id;
+
+        if(id !== keys.BACK_SPACE && id !== keys.EVALUATE && id !== keys.SIGN && id != keys.SQUARE_ROOT){
+            this.setState((prevState, props) => ({
+                expression: prevState.expression+id
+            }));
+        }else if(id === keys.BACK_SPACE){
+            this.setState((prevState, props) => ({
+                expression: prevState.expression.slice(0, prevState.expression.length-1)
+            }));            
+        }else if(id === keys.EVALUATE){
+            try {
+                let result = eval(this.state.expression);
+                let expressionHistory = this.state.expression + ' = ' + result;
+                this.setState((prevState, props) => ({
+                    history: [...prevState.history, expressionHistory]
+                }));            
+            } catch (error) {
+                console.log("invalid expression");                
+            }
+        }
     }
 
     render() {
@@ -51,7 +76,7 @@ export default class App extends Component {
                 <Row>
                     <Col xs={10} xsOffset={1} sm={8} smOffset={2} md={4} mdOffset={4}>
                         <div className="calculator">
-                            <DisplayScreen />
+                            <DisplayScreen expression={this.state.expression} history={this.state.history}/>
                             <Keypad keys={this.state.keys} onKeyPress={this.onKeyPress}/>
                         </div>
                     </Col>

@@ -13,7 +13,7 @@ export const NINE  = "9";
 //Operators
 export const PLUS        = "+";
 export const MINUS       = "-";
-export const MULTIPLY    = "x";
+export const MULTIPLY    = "*";
 export const DIVIDE      = "/";
 export const DECIMAL     = ".";
 export const PERCENTAGE  = "%";

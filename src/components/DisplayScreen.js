@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 
+//helpers
+import PropTypes from 'prop-types';
+
 //Third Party Components
 import {Grid, Row, Col} from 'react-bootstrap';
 
 class DisplayScreen extends Component{
-
-    constructor(props){
-        super(props);
-        this.state = {
-        };
-    }
 
     render(){
         return (
@@ -17,24 +14,25 @@ class DisplayScreen extends Component{
                 <Row>
                     <Col xs={12}>
                         <div className="history">
-                            <div>
-                                1+5 = 6
-                            </div>
-                            <div>
-                                1+5 = 6
-                            </div>
-                            <div>
-                                1+5 = 6
-                            </div>
+                            {
+                                this.props.history.map((ele, index) => {
+                                    return <div key={index}>{ele}</div>
+                                })
+                            }
                         </div>
                         <div className="edit-screen">
-                            1+2x3
+                            {this.props.expression}
                         </div>
                     </Col>
                 </Row>
             </Grid>
         );
     };
+}
+
+DisplayScreen.propTypes = {
+    history: PropTypes.array.isRequired,
+    expression: PropTypes.string.isRequired
 }
 
 export default DisplayScreen;

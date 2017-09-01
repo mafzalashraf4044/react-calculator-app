@@ -11,17 +11,12 @@ import {Grid, Row, Col} from 'react-bootstrap';
 
 class Keypad extends Component{
 
-    constructor(props){
-        super(props);
-        this.state = {};
-    }
-
     getIconImage = (key) => {
 
-        if(key == BACK_SPACE){
-            return (<img src="/images/ic_backspace_white_24px.svg" />);
-        }else if(key == SQUARE_ROOT){
-            return <img src="/images/icons8-square_root-48.png" />;
+        if(key === BACK_SPACE){
+            return (<img src="/images/ic_backspace_white_24px.svg" alt={key}/>);
+        }else if(key === SQUARE_ROOT){
+            return <img src="/images/icons8-square_root-48.png" alt={key}/>;
         }
 
     }
@@ -34,9 +29,9 @@ class Keypad extends Component{
                         {
                             this.props.keys.map((key, index) => {
                                 return (
-                                    <button type="button" className="key" key={index} onClick={this.props.onKeyPress}>
+                                    <button type="button" className="key" id={key} key={index} onClick={this.props.onKeyPress}>
                                         {
-                                            key != BACK_SPACE && key != SQUARE_ROOT ? key : this.getIconImage(key)
+                                            key !== BACK_SPACE && key !== SQUARE_ROOT ? key : this.getIconImage(key)
                                         }
                                     </button>
                                 );
