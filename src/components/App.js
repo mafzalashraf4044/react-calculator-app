@@ -5,9 +5,6 @@ import React, {
 //constants
 import * as keys from '../constants/keypadConstants'; 
 
-//helpers
-// import update from 'immutability-helper';
-
 //Third Party Components
 import { Grid, Row, Col } from 'react-bootstrap';
 
@@ -60,8 +57,7 @@ export default class App extends Component {
         let pressedKey = event.currentTarget.id;
 
         //Key presses with numeric text and operators will be handled here
-        if (pressedKey !== keys.BACK_SPACE && pressedKey !== keys.EVALUATE && pressedKey !== keys.ANS && pressedKey != keys.SQUARE_ROOT) {
-            
+        if (pressedKey !== keys.BACK_SPACE && pressedKey !== keys.EVALUATE && pressedKey !== keys.ANS && pressedKey !== keys.SQUARE_ROOT) {
             this.setState((prevState, props) => ({
                 errTxt: "",
                 expression: prevState.expression + pressedKey,
@@ -83,7 +79,10 @@ export default class App extends Component {
             this.evaluateExpression(pressedKey);
         
         } else if (pressedKey === keys.ANS && this.state.ansHistory.length > 0) {
-            
+            /**
+             * Answers history is maintained in ansHistory state, which is an array. The index of answer currently being used is stored
+             * in currentAnsHistory state, a copy of original expression is created answer can be appended to the expression easily.
+             */
             this.setState((prevState, props) => ({
                 currentAnsHistoryIndex: prevState.currentAnsHistoryIndex === 0 ? prevState.ansHistory.length - 1 : prevState.currentAnsHistoryIndex - 1,
                 expression: prevState.expressionCopy + prevState.ansHistory[prevState.currentAnsHistoryIndex],
