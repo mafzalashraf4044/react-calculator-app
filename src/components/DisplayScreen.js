@@ -20,8 +20,8 @@ class DisplayScreen extends Component{
                                 })
                             }
                         </div>
-                        <div className="edit-screen">
-                            {this.props.expression}
+                        <div className="editable-screen">
+                            {this.props.errTxt ? this.props.errTxt : this.props.expression}
                         </div>
                     </Col>
                 </Row>
@@ -32,7 +32,8 @@ class DisplayScreen extends Component{
 
 DisplayScreen.propTypes = {
     history: PropTypes.array.isRequired,
-    expression: PropTypes.string.isRequired
+    expression: PropTypes.string.isRequired,
+    errTxt: PropTypes.string.isRequired,
 }
 
 export default DisplayScreen;
