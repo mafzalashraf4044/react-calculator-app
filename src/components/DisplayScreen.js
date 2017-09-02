@@ -8,6 +8,16 @@ import {Grid, Row, Col} from 'react-bootstrap';
 
 class DisplayScreen extends Component{
 
+    getEditableScreenTxt = () => {
+        if(this.props.errTxt !== ""){
+            return this.props.errTxt;
+        }else if(this.props.expression === ""){
+            return "0";
+        }
+
+        return this.props.expression;
+    }
+
     render(){
         return (
             <Grid className="display-screen">
@@ -21,7 +31,7 @@ class DisplayScreen extends Component{
                             }
                         </div>
                         <div className="editable-screen">
-                            {this.props.errTxt ? this.props.errTxt : this.props.expression}
+                            {this.getEditableScreenTxt()}
                         </div>
                     </Col>
                 </Row>

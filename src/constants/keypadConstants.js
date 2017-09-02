@@ -18,8 +18,8 @@ export const DIVIDE      = "/";
 export const DECIMAL     = ".";
 export const PERCENTAGE  = "%";
 export const SQUARE_ROOT = "sq-root";
-export const ANS        = "ans"
 
 //Operations
+export const ANS        = "ans"
 export const EVALUATE   = "=";
 export const BACK_SPACE = "bk-space";
